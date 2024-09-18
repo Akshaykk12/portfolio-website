@@ -145,7 +145,7 @@ const About = () => {
                   <div className="text-2xl xl:text-4xl 
                                   font-extrabold text-accent 
                                   mb-2">
-                    <CountUp start={0} end={2} duration={10} />+
+                    <CountUp start={0} end={3} duration={10} />+
                   </div>
                   <div className="text-xs text-black uppercase tracking-[1px] leading-[1.4] 
                                   max-w-[100px]">
@@ -159,7 +159,7 @@ const About = () => {
                                 after:absolute after:top-0 after:right-0">
                   <div className="text-2xl xl:text-4xl font-extrabold text-accent 
                                   mb-2">
-                    <CountUp start={0} end={4} duration={10} />+
+                    <CountUp start={0} end={10} duration={10} />+
                   </div>
                   <div className="text-xs text-black uppercase tracking-[1px] leading-[1.4] 
                                   max-w-[100px]">
