@@ -15,13 +15,14 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Detect package manager
+      - name: Detect Package Manager
         id: detect-package-manager
         run: |
           if [ -f "${{ github.workspace }}/yarn.lock" ]; then
@@ -48,33 +49,32 @@ jobs:
         with:
           static_site_generator: next
 
-      - name: Restore cache
+      - name: Restore Cache
         uses: actions/cache@v3
         with:
-          path: |
-            .next/cache
+          path: .next/cache
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
-      - name: Build with Next.js
+      - name: Build Next.js App
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
-      - name: Export static site
+      - name: Export Static HTML with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
 
-      - name: Debug Build Output
-        run: ls -l ./out  # Ensure `out/` exists
+      - name: Debug Output Directory
+        run: ls -l ./out  # Ensure 'out' directory is created
 
-      - name: Upload artifact for GitHub Pages
-        uses: actions/upload-artifact@v4
+      - name: Upload Artifact for Deployment
+        uses: actions/upload-pages-artifact@v1
         with:
-          name: github-pages
-          path: ./out
+          path: ./out  # Ensure correct directory
 
+  # Deployment job
   deploy:
     environment:
       name: github-pages
@@ -85,5 +85,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-        with:
-          artifact_name: github-pages
