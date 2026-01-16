@@ -1,13 +1,11 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
-
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Dark-mode palette variables */
 :root{
   --bg-dark: #07101a;
   --panel: #0f1724;
@@ -17,6 +15,12 @@
   --accent: #f13024;
   --input-bg: rgba(255,255,255,0.02);
   --input-border: rgba(255,255,255,0.08);
+}
+
+/* Prevent any page from scrolling by default */
+html, body, #__next {
+  height: 100%;
+  overflow: hidden;
 }
 
 .translate-z-0 {
@@ -41,13 +45,11 @@
   body {
     background-color: var(--bg-dark);
     color: var(--text);
-    /* overflow-hidden; */
+    height: 100%;
     leading-relaxed: 1.6;
-    /* cursor: none; */
     font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   }
   .page {
-    @apply w-full h-screen overflow-hidden;
   }
   .h1 {
     @apply text-[35px] leading-tight md:text-[60px] md:leading-[1.3] mb-8 font-semibold;
@@ -89,13 +91,11 @@
     color: var(--text);
   }
 
-  /* small tweaks for components that used white text on light backgrounds */
   .h1 .text-accent,
   .text-accent {
     color: var(--accent);
   }
 
-  /* ensure utility classes that relied on `text-white/60` are consistent */
   .muted {
     color: var(--muted-2);
   }
