@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { useEffect } from 'react';
-import {RiLinkedinBoxLine, RiInstagramLine, RiTwitterLine, RiBehanceLine,  RiGithubLine } from 'react-icons/ri'
+import {RiLinkedinBoxLine, RiTwitterLine,  RiGithubLine } from 'react-icons/ri'
+import { SiLeetcode } from 'react-icons/si'
 
 
 const Socials = () => {
@@ -24,11 +25,8 @@ const Socials = () => {
     <Link href={'https://twitter.com/Akshay12kk'} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-all duration-300 text-black">
       <RiTwitterLine />
     </Link>
-    <Link href={'https://www.behance.net/akshaykudalkar'} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-all duration-300 text-black">
-      <RiBehanceLine />
-    </Link>
-    <Link href={'https://www.instagram.com/akshaykk_12/'} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-all duration-300 text-black">
-      <RiInstagramLine />
+    <Link href={'https://leetcode.com/u/Akshaykk12/'} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-all duration-300 text-black" aria-label="LeetCode">
+      <SiLeetcode />
     </Link>
     </div>
   );
