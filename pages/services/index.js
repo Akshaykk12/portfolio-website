@@ -19,20 +19,15 @@ const Services = () => {
   }, []);
   
   return (
-    <div className=' h-full 
-                    bg-[#d5d7d9]  
-                    flex items-center justify-center
-                    sm:px-0 py-24 my-10 xl:py-10 xl:my-0'>
+    <div className='min-h-screen bg-[#d5d7d9] sm:px-0 py-12 flex flex-col'>
       <Head>
         <meta name="description" 
               content="Here I present differnet types of services." />
       </Head>
       
-      <div>
+      <div className='flex-1 overflow-auto'>
         <Circles />
-        <div className='container 
-                        mx-auto mt-[240px] h-screen pb-24
-                        overflow-auto '>
+        <div className='container mx-auto py-8 mt-8 h-screen pb-24 overflow-auto over'>
           <div className='flex flex-col xl:flex-row 
                           gap-x-8 py-20'>
             <div className='text-center 

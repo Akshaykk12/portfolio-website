@@ -1,5 +1,3 @@
-import { useMediaQuery } from 'react-responsive';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import React, { useEffect } from 'react';
 
 import{
@@ -11,114 +9,72 @@ import{
   RxArrowTopRight,
 }from 'react-icons/rx'
 
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/pagination';
-
-import { FreeMode, Pagination } from 'swiper';
-
 // data
-const ServiceCard = ({ icon, title, description }) => (
-  <div className='mb-8 bg-[rgba(65,47,123,0.15)] rounded-lg px-4 py-6 cursor-pointer hover:bg-[rgba(89,65,169,0.15)]'>
-    <div className='text-3xl text-accent mb-2'>{icon}</div>
-    <div className='mb-4'>
-      <div className='mb-1 text-base font-semibold text-black'>{title}</div>
-      <p className='max-w-[300px] text-sm leading-normal text-black'>{description}</p>
-    </div>
-    <div className='text-2xl text-black'>
-      <RxArrowTopRight className='transition-all duration-300' />
-    </div>
-  </div>
-);
 
 export const serviceData = [
   {
     icon: <RxCrop />,
-    title: 'Machine Learning Model Development',
-    description: 'I design and implement custom machine learning models.',
+    title: 'Machine Learning & AI Solutions',
+    description: 'Building intelligent systems, custom ML models, automation workflows, and data-driven applications.',
   },
   {
-    icon: <RxReader />,
-    title: 'Predictive Analytics Solutions',
-    description: 'Leverage the power of data to make informed decisions.',
+    icon: <RxDesktop />,
+    title: 'Java Full-Stack Development',
+    description: 'Developing scalable full-stack applications using Java, Spring Boot, REST APIs, and modern front-end frameworks.',
   },
   {
-    icon: <RxPencil2 />,
-    title: 'Data Visualization ',
-    description: 'I help you communicate your data-driven insights effectively.',
+    icon: <RxRocket />,
+    title: 'Cloud & DevOps Engineering',
+    description: 'Implementing CI/CD pipelines, Docker, Kubernetes, cloud deployments, and automation for reliability and scale.',
   },
   {
     icon: <RxDesktop />,
     title: 'Web Development',
-    description: 'I specialize in developing custom websites.',
+    description: 'Specializing in responsive, high-performance, and modern websites tailored to your business needs.',
   },
   {
-    icon: <RxRocket />,
+    icon: <RxPencil2 />,
     title: 'UI/UX Design',
-    description: 'Elevate your digital presence with user-centric design.',
+    description: 'Crafting intuitive, modern, and user-centric digital experiences for web and mobile platforms.',
+  },
+  {
+    icon: <RxReader />,
+    title: 'Mobile Application Development (Flutter)',
+    description: 'Building fast, beautiful, and cross-platform mobile applications using Flutter for Android and iOS.',
   },
 ];
 
-const ServiceSlider = () => {
 
-  const isDesktop = useMediaQuery({ minWidth: 640 });
+
+const ServiceSlider = () => {
 
   useEffect(() => {
     document.documentElement.lang = 'en';
-    document.title = 'Service Slider Comp';
+    document.title = 'Services';
     return () => {
       document.documentElement.removeAttribute('lang');
     };
   }, []);
 
-  if (isDesktop) {
-    return (
-      <Swiper 
-        breakpoints={{
-          320: {
-            slidesPerView:1,
-            spaceBetween: 15,
-          },
-          640: {
-            slidesPerView:3,
-            spaceBetween: 15,
-          },
-        }}
-        freeMode= {true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[FreeMode, Pagination]}
-        className=' h-[240px] sm:h-[340px]'
-      >
-      {serviceData.map((item, index) =>{
-        return (
-          <SwiperSlide key={index}>
-            <div className=' bg-[rgba(65,47,123,0.15)] hover:bg-[rgba(89,65,169,0.15)]
-                              h-max rounded-lg px-6 py-8 gap-x-6 sm:gap-x-0
-                              flex sm:flex-col justify-start  
-                              group cursor-pointer '>
-              <div className=' text-4xl text-accent mb-4'>{item.icon}</div>
-              <div className=' mb-8'>
-                <div className=' mb-2 text-lg font-semibold text-black '>{item.title}</div>
-                <p className=' max-w-[350px] leading-normal text-black'>{item.description}</p>
-              </div>
-              <div className=' text-3xl text-black'>
-                <RxArrowTopRight className=' group-hover:rotate-45 group-hover:text-accent transition-all duration-300'/>
-              </div>
-            </div>
-          </SwiperSlide>
-        );
-        })
-      }
-    </Swiper>
-    );
-  }
   return (
-    <div className=''>
-      {serviceData.map((item, index) => (
-        <ServiceCard key={index} {...item} />
-      ))}
+    <div className='max-w-5xl mx-auto px-4'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 min-h-0'>
+        {serviceData.map((item, index) => (
+          <div
+            key={index}
+            className='bg-[rgba(65,47,123,0.15)] hover:bg-[rgba(89,65,169,0.15)] rounded-lg p-6 flex flex-col justify-between min-h-0 group cursor-pointer'
+          >
+            <div>
+              <div className='text-4xl text-accent mb-4'>{item.icon}</div>
+              <div className='mb-3 text-lg font-semibold text-black'>{item.title}</div>
+              <p className='text-sm leading-normal text-black'>{item.description}</p>
+            </div>
+            <div className='text-3xl text-black mt-6 self-end'>
+              <RxArrowTopRight className='group-hover:rotate-45 group-hover:text-accent transition-all duration-300' />
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
