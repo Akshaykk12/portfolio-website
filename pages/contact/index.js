@@ -41,9 +41,9 @@ const Contact = () => {
   };
 
   return (
-    <div className="h-full py-10 xl:py-0
-                    bg-[#d5d7d9] 
-                    overflow-auto ">
+    <div className="min-h-screen flex items-center justify-center
+            bg-[#d5d7d9]
+            overflow-auto">
       <Head>
         <meta name="description" 
               content="This page is for users to contact me." />
@@ -52,11 +52,11 @@ const Contact = () => {
               type="image/svg+xml" />
       </Head>
 
-      <div >
+      <div>
         <div className="container 
-                        mx-auto my-32 h-full
-                        text-center xl:text-left 
-                        flex items-center justify-center  relative">
+                        mx-auto h-full
+                        text-center 
+                        flex items-center justify-center relative">
           <div className="flex flex-col
                           w-full max-w-[700px] ">
             <motion.h2

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Head from 'next/head';
 import { v4 as uuidv4 } from 'uuid';
-import { FaHtml5, FaCss3, FaJs, FaReact, FaWordpress, FaFigma, FaPython } from "react-icons/fa";
-import { SiNextdotjs, SiFramer, SiPowerbi, SiTableau, SiMysql, SiTensorflow, SiKeras, SiJupyter, SiScikitlearn, SiPytorch } from "react-icons/si";
+import { FaHtml5, FaCss3, FaJs, FaReact, FaWordpress, FaFigma, FaPython, FaJava } from "react-icons/fa";
+import { SiNextdotjs, SiFramer, SiPowerbi, SiTableau, SiMysql, SiTensorflow, SiKeras, SiJupyter, SiScikitlearn, SiPytorch,
+         SiDocker, SiKubernetes, SiAmazonaws, SiTailwindcss, SiVuedotjs, SiFlutter, SiSpringboot, SiGithub, SiGit, SiAzuredevops, SiOpenai } from "react-icons/si";
 import CountUp from "react-countup";
 import Avatar from "../../components/Avatar";
 import Circles from "../../components/Circles";
@@ -16,31 +17,74 @@ const aboutData = [
     title: 'skills',
     info: [
       {
-        title: 'Machine Learning Engineer',
+        title: 'Programming',
         icons: [
+          <FaJava />,
           <FaPython />,
-          <SiTensorflow />,
-          <SiKeras />,
-          <SiJupyter />,
-          <SiScikitlearn />,
-          <SiPytorch />,
+          <FaJs />,
         ],
       },
       {
-        title: 'Web Developer',
+        title: 'Cloud & Deployment',
+        icons: [
+          <SiAmazonaws />,
+          <SiKubernetes />,
+        ],
+      },
+      {
+        title: 'Containerization',
+        icons: [
+          <SiDocker />,
+        ],
+      },
+      {
+        title: 'Machine Learning',
+        icons: [
+          <SiTensorflow />,
+          <SiKeras />,
+          <SiPytorch />,
+          <SiJupyter />,
+          <SiScikitlearn />
+        ],
+      },
+      {
+        title: 'Web Development',
         icons: [
           <FaHtml5 />,
           <FaCss3 />,
           <FaJs />,
           <FaReact />,
           <SiNextdotjs />,
-          <SiFramer />,
-          <FaWordpress />,
+          <SiTailwindcss />,
+          <SiVuedotjs />,
         ],
       },
       {
-        title: 'Data Analytics',
-        icons: [<SiPowerbi />, <SiTableau />, <SiMysql />],
+        title: 'App Development',
+        icons: [
+          <SiFlutter />,
+        ],
+      },
+      {
+        title: 'Backend',
+        icons: [
+          <FaJava />,
+          <SiSpringboot />,
+        ],
+      },
+      {
+        title: 'Tools',
+        icons: [
+          <SiGithub />,
+          <SiGit />,
+          <SiAzuredevops />,
+        ],
+      },
+      {
+        title: 'Database',
+        icons: [
+          <SiMysql />,
+        ],
       },
     ],
   },
@@ -48,12 +92,15 @@ const aboutData = [
     title: 'experience',
     info: [
       {
-        title: 'Technical Team - DSAII College Club',
-        stage: '2022 - 2023',
-      },
-      {
-        title: 'Design Team - Devkraft College Club',
-        stage: '2022 - 2023',
+        title: 'Software Engineer — Capgemini',
+        stage: 'September 2025 - Present',
+        location: 'Pune, India',
+        details: [
+          'Built and maintained backend microservices using Spring Boot',
+          'Designed and consumed RESTful APIs with JWT authentication',
+          'Containerized services with Docker and deployed on Kubernetes (EKS)',
+          'Worked with AWS services for CI/CD and production deployments'
+        ]
       }
     ],
   },
@@ -88,10 +135,10 @@ const About = () => {
   }, []);
 
   return (
-  <div className="h-full py-32 
-                  bg-white/90 
-                  text-center xl:text-left 
-                  overflow-auto ">
+  <div className="min-h-screen flex items-center justify-center
+                  bg-white/90
+                  text-center
+                  overflow-auto">
       <Head>
         <meta name="description" 
               content="Detailed description about me." />
@@ -112,22 +159,36 @@ const About = () => {
           <Avatar />
         </motion.div>
 
-        <div className="container mx-auto h-full flex flex-col items-center xl:flex-row gap-x-6">
+        <div className="container mx-auto h-full flex flex-col items-center xl:flex-row gap-12 px-6 py-12">
 
           <div className="flex-1 flex flex-col justify-center 
-                          relative py-12 xl:py-[100px]">
+                          relative py-12 xl:py-[100px] px-6">
             <motion.h2  variants={fadeIn('right', 0.2)} 
                         initial='hidden' 
                         animate='show' 
                         exit='hidden' 
                         className="h2 text-black"><span className="text-accent">Journey</span> Till Now.</motion.h2>
-            <motion.p variants={fadeIn('right', 0.4)} 
-                      initial='hidden' 
-                      animate='show' 
-                      exit='hidden' 
-                      className="text-black">
-              Almost three years ago, I began learning <span className='text-accent'>UI/UX designing</span>  and parallel to that started learning <span className="text-accent">Web Development</span>  and honed my skills. After that, I began my journey into <span className="text-accent">Machine Learning</span>  and <span className="text-accent">Data Analyst</span> by learning and making projects at the same time.
-            </motion.p>
+            <motion.div variants={fadeIn('right', 0.4)}
+                        initial='hidden'
+                        animate='show'
+                        exit='hidden'
+                        className="text-black max-w-2xl mx-auto xl:mx-0 space-y-6 text-left">
+              <h3 className="text-2xl font-semibold">About Me</h3>
+              <h6>
+                I’m a software engineer who enjoys building practical, meaningful things across AI/ML, backend engineering, and design. I like working with Java, Spring Boot, microservices, and cloud systems, while also exploring how good UI/UX can make complex ideas feel simple.
+              </h6>
+
+              <h4 className="text-xl font-semibold">Current Interests</h4>
+              <ul className="list-disc list-inside space-y-1">
+                <li>Building AI-driven applications</li>
+                <li>RAG and LLM workflows</li>
+                <li>Backend engineering & microservices</li>
+                <li>Cloud and DevOps</li>
+                <li>UI/UX and interaction design</li>
+              </ul>
+
+              <h4>I’m still exploring, still learning, and still building—one project at a time.</h4>
+            </motion.div>
             <motion.div variants={fadeIn('right', 0.6)} 
                         initial='hidden' 
                         animate='show' 
@@ -186,14 +247,13 @@ const About = () => {
                       initial='hidden' 
                       animate='show' 
                       exit='hidden' 
-                      className=" flex flex-col 
-                                  w-full xl:max-w-[48%] h-[300px]">
+                      className=" flex flex-col w-full xl:max-w-[48%] h-[600px] px-6 space-y-4">
             <div className="flex 
                             gap-x-4 xl:gap-x-8 mx-auto xl:mx-0 mb-4 
                             text-black">
               {aboutData.map((item, itemIndex) => (
                 <div
-                  key={item.title} // Use the title as a unique key
+                  key={item.title} 
                   className={`${index === itemIndex && ' text-accent after:w-[100%] after:bg-accent after:transition-all after:duration-300 '} 
                             cursor-pointer 
                             capitalize xl:text-lg 
@@ -204,8 +264,7 @@ const About = () => {
                 </div>
               ))}
             </div>
-            <div className="py-2 xl:py-6 gap-y-2 xl:gap-y-4
-                            flex flex-col items-center xl:items-start">
+            <div className="py-2 xl:py-6 gap-y-2 xl:gap-y-4 flex flex-col items-center xl:items-start space-y-4">
               {aboutData[index].info.map((item, itemIndex) => (
                 <div key={itemIndex} className="flex-1 flex flex-col md:flex-row 
                                                 max-w-max gap-x-2 items-center  
@@ -217,7 +276,7 @@ const About = () => {
                   <div className="flex 
                                   gap-x-4">
                     {item.icons?.map((icon, iconIndex) => (
-                      <div key={uuidv4()} className="text-2xl text-black">{icon}</div> // Generate unique keys using uuid
+                      <div key={uuidv4()} className="text-2xl text-black">{icon}</div> 
                     ))}
                   </div>
                 </div>

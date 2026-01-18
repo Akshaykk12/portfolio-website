@@ -59,7 +59,7 @@ const Hero = () => {
             exit="hidden"
             className="flex justify-center"
           >
-            <ProjectsBtn />
+            {/* <ProjectsBtn /> */}
           </motion.div>
         </div>
       </div>
