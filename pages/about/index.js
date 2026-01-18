@@ -10,7 +10,6 @@ import Circles from "../../components/Circles";
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../variants';
 
-/* eslint-disable react/jsx-key */
 
 const aboutData = [
   {
@@ -92,7 +91,7 @@ const aboutData = [
     title: 'experience',
     info: [
       {
-        title: 'Software Engineer — Capgemini',
+        title: 'Capgemini - Software Engineer',
         stage: 'September 2025 - Present',
         location: 'Pune, India',
         details: [
@@ -125,6 +124,9 @@ const aboutData = [
 
 const About = () => {
   const [index, setIndex] = useState(0);
+  const [solved, setSolved] = useState(null);
+  const [contributions, setContributions] = useState(null);
+  const [yearsExp, setYearsExp] = useState(0);
 
   useEffect(() => {
     document.documentElement.lang = 'en';
@@ -132,6 +134,27 @@ const About = () => {
     return () => {
       document.documentElement.removeAttribute('lang');
     };
+  }, []);
+
+  useEffect(() => {
+    const startDate = new Date('2025-09-01');
+    const now = new Date();
+    const yearsExperience = (now - startDate) / (1000 * 60 * 60 * 24 * 365.25);
+    setYearsExp(parseFloat(yearsExperience.toFixed(1)));
+  }, []);
+
+  useEffect(() => {
+    fetch("https://leetcode-api-faisalshohag.vercel.app/Akshaykk12")
+      .then(res => res.json())
+      .then(data => setSolved(data.totalSolved))
+      .catch(err => console.log('Error fetching LeetCode stats:', err));
+  }, []);
+
+  useEffect(() => {
+    fetch("https://api.github.com/users/Akshaykk12")
+      .then(res => res.json())
+      .then(data => setContributions(data.public_repos))
+      .catch(err => console.log('Error fetching GitHub stats:', err));
   }, []);
 
   return (
@@ -206,7 +229,15 @@ const About = () => {
                   <div className="text-2xl xl:text-4xl 
                                   font-extrabold text-accent 
                                   mb-2">
-                    <CountUp start={0} end={3} duration={10} />+
+                    {yearsExp > 0 ? (
+                      <>
+                        <CountUp start={0} end={Math.floor(yearsExp)} duration={10} />
+                        <span className="text-lg">.{Math.round((yearsExp % 1) * 10)}</span>
+                      </>
+                    ) : (
+                      <span>...</span>
+                    )}
+                    +
                   </div>
                   <div className="text-xs text-black uppercase tracking-[1px] leading-[1.4] 
                                   max-w-[100px]">
@@ -233,12 +264,31 @@ const About = () => {
                                 after:bg-white/10 
                                 after:absolute after:top-0 after:right-0">
                   <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                    <CountUp start={0} end={200} duration={5} />+
+                    {contributions ? (
+                      <CountUp start={0} end={contributions} duration={10} />
+                    ) : (
+                      <span>...</span>
+                    )}
+                    +
                   </div>
                   <div className="text-xs text-black uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                    Contributions on Github
+                    Public Repositories
                   </div>
                 </div>
+                {solved && (
+                  <div className="relative 
+                                  flex-1 
+                                  after:w-1px after:h-full 
+                                  after:bg-white/10 
+                                  after:absolute after:top-0 after:right-0">
+                    <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
+                      <CountUp start={0} end={parseInt(solved)} duration={10} />+
+                    </div>
+                    <div className="text-xs text-black uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
+                      LeetCode Problems Solved
+                    </div>
+                  </div>
+                )}
               </div>
             </motion.div>
           </div>
@@ -286,6 +336,7 @@ const About = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 
