@@ -9,19 +9,20 @@ import Circles from "../../components/Circles";
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../variants';
 
+// --- FIX: store icon components instead of JSX elements ---
 const aboutData = [
   {
     title: 'skills',
     info: [
-      { title: 'Programming', icons: [<FaJava />, <FaPython />, <FaJs />] },
-      { title: 'Cloud & Deployment', icons: [<SiAmazonaws />, <SiKubernetes />] },
-      { title: 'Containerization', icons: [<SiDocker />] },
-      { title: 'Machine Learning', icons: [<SiTensorflow />, <SiKeras />, <SiPytorch />, <SiJupyter />, <SiScikitlearn />] },
-      { title: 'Web Development', icons: [<FaHtml5 />, <FaCss3 />, <FaJs />, <FaReact />, <SiNextdotjs />, <SiTailwindcss />, <SiVuedotjs />] },
-      { title: 'App Development', icons: [<SiFlutter />] },
-      { title: 'Backend', icons: [<FaJava />, <SiSpringboot />] },
-      { title: 'Tools', icons: [<SiGithub />, <SiGit />, <SiAzuredevops />] },
-      { title: 'Database', icons: [<SiMysql />] },
+      { title: 'Programming', icons: [FaJava, FaPython, FaJs] },
+      { title: 'Cloud & Deployment', icons: [SiAmazonaws, SiKubernetes] },
+      { title: 'Containerization', icons: [SiDocker] },
+      { title: 'Machine Learning', icons: [SiTensorflow, SiKeras, SiPytorch, SiJupyter, SiScikitlearn] },
+      { title: 'Web Development', icons: [FaHtml5, FaCss3, FaJs, FaReact, SiNextdotjs, SiTailwindcss, SiVuedotjs] },
+      { title: 'App Development', icons: [SiFlutter] },
+      { title: 'Backend', icons: [FaJava, SiSpringboot] },
+      { title: 'Tools', icons: [SiGithub, SiGit, SiAzuredevops] },
+      { title: 'Database', icons: [SiMysql] },
     ],
   },
   {
@@ -192,14 +193,16 @@ const About = () => {
                   {item.location && <div>• {item.location}</div>}
                   {item.details && (
                     <ul className="list-disc ml-4">
-                      {item.details.map((detail, detailIndex) => (
-                        <li key={detailIndex}>{detail}</li>
+                      {item.details.map((detail) => (
+                        <li key={detail}>{detail}</li> 
                       ))}
                     </ul>
                   )}
                   <div className="flex gap-x-4">
-                    {item.icons?.map((icon, iconIndex) => (
-                      <div key={iconIndex} className="text-2xl text-black">{icon}</div>
+                    {item.icons?.map((Icon, i) => (
+                      <div key={`${item.title}-${i}`} className="text-2xl text-black">
+                        <Icon />
+                      </div>
                     ))}
                   </div>
                 </div>
