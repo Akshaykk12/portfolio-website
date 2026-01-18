@@ -190,13 +190,12 @@ const About = () => {
                         initial='hidden' 
                         animate='show' 
                         exit='hidden' 
-                        className="h2 text-black"><span className="text-accent">Journey</span> Till Now.</motion.h2>
+                        className="h2 text-black"><span className="text-accent">About</span> Me</motion.h2>
             <motion.div variants={fadeIn('right', 0.4)}
                         initial='hidden'
                         animate='show'
                         exit='hidden'
                         className="text-black max-w-2xl mx-auto xl:mx-0 space-y-6 text-left">
-              <h3 className="text-2xl font-semibold">About Me</h3>
               <h6>
                 I’m a software engineer who enjoys building practical, meaningful things across AI/ML, backend engineering, and design. I like working with Java, Spring Boot, microservices, and cloud systems, while also exploring how good UI/UX can make complex ideas feel simple.
               </h6>
@@ -326,7 +325,7 @@ const About = () => {
                   <div className="flex 
                                   gap-x-4">
                     {item.icons?.map((icon, iconIndex) => (
-                      <div key={uuidv4()} className="text-2xl text-black">{icon}</div> 
+                      <div key={iconIndex} className="text-2xl text-black">{icon}</div> 
                     ))}
                   </div>
                 </div>
