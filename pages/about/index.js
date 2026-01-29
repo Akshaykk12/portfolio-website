@@ -66,7 +66,7 @@ const About = () => {
   }, []);
 
   useEffect(() => {
-    const startDate = new Date('2025-09-01');
+    const startDate = new Date('2025-07-01');
     const now = new Date();
     const yearsExperience = (now - startDate) / (1000 * 60 * 60 * 24 * 365.25);
     setYearsExp(parseFloat(yearsExperience.toFixed(1)));
